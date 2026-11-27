@@ -7,16 +7,20 @@ export async function updateSession(request: NextRequest) {
   const { NEXT_PUBLIC_SUPABASE_URL, NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY } = getEnv();
   let response = NextResponse.next({ request });
 
-  const supabase = createServerClient<Database>(NEXT_PUBLIC_SUPABASE_URL, NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY, {
-    cookies: {
-      getAll: () => request.cookies.getAll(),
-      setAll: (items) => {
-        items.forEach(({ name, value }) => request.cookies.set(name, value));
-        response = NextResponse.next({ request });
-        items.forEach(({ name, value, options }) => response.cookies.set(name, value, options));
+  const supabase = createServerClient<Database>(
+    NEXT_PUBLIC_SUPABASE_URL,
+    NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY,
+    {
+      cookies: {
+        getAll: () => request.cookies.getAll(),
+        setAll: (items) => {
+          items.forEach(({ name, value }) => request.cookies.set(name, value));
+          response = NextResponse.next({ request });
+          items.forEach(({ name, value, options }) => response.cookies.set(name, value, options));
+        },
       },
     },
-  });
+  );
 
   const {
     data: { user },

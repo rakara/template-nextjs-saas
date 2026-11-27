@@ -11,9 +11,7 @@ export default async function SignUpPage({
     ? "Registration could not be completed. Check your details and try again."
     : null;
   const confirmationMessage =
-    params.message === "check-email"
-      ? "Check your inbox to confirm your email address."
-      : null;
+    params.message === "check-email" ? "Check your inbox to confirm your email address." : null;
 
   return (
     <main className="mx-auto flex min-h-screen max-w-md flex-col justify-center px-6">
@@ -50,9 +48,7 @@ export default async function SignUpPage({
             {confirmationMessage}
           </p>
         ) : null}
-        <button className="rounded-lg bg-blue-700 p-3 text-white">
-          Create account
-        </button>
+        <button className="rounded-lg bg-blue-700 p-3 text-white">Create account</button>
       </form>
       <p className="mt-6 text-sm">
         Already registered?{" "}

@@ -3,7 +3,9 @@ import { getSafeRedirectPath } from "@/lib/safe-redirect";
 
 describe("getSafeRedirectPath", () => {
   it("allows same-origin absolute paths with query and hash", () => {
-    expect(getSafeRedirectPath("/dashboard?tab=usage#billing")).toBe("/dashboard?tab=usage#billing");
+    expect(getSafeRedirectPath("/dashboard?tab=usage#billing")).toBe(
+      "/dashboard?tab=usage#billing",
+    );
   });
 
   it("falls back for external and protocol-relative URLs", () => {
