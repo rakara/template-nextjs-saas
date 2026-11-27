@@ -8,3 +8,5 @@ coverage
 *.tsbuildinfo
 
 audit.json
+
+next-env.d.ts
