@@ -12,4 +12,4 @@ Next.js App Router, React, strict TypeScript, Tailwind CSS, Supabase Auth/Postgr
 2. Run `npm install`.
 3. Run `npm run dev`.
 
-See `docs/` and `TASKS.md` for implementation notes. No fake users, mocked authentication or hard-coded credentials are shipped.
+See `docs/` and `TASKS.md` for implementation notes. Run `npx supabase start` and `npx supabase db reset` to start the local database and apply migrations. No fake users, mocked authentication or hard-coded credentials are shipped.
