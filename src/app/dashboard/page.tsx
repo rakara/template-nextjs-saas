@@ -1,0 +1,4 @@
+import { redirect } from "next/navigation";
+import { createClient } from "@/lib/supabase/server";
+import { signOut } from "@/app/actions/auth";
+export default async function DashboardPage() { const supabase = await createClient(); const {data:{user}} = await supabase.auth.getUser(); if (!user) redirect("/sign-in"); return <main className="mx-auto min-h-screen max-w-5xl px-6 py-16"><header className="flex items-center justify-between"><h1 className="text-3xl font-bold">Dashboard</h1><form action={signOut}><button className="rounded-lg border px-4 py-2">Sign out</button></form></header><section className="mt-10 rounded-xl border bg-white p-6"><h2 className="font-semibold">Authenticated session</h2><p className="mt-2 text-slate-600">Signed in as {user.email}</p><p className="mt-4 text-sm text-slate-500">Enforce authorization at every protected data boundary and with PostgreSQL RLS.</p></section></main>; }

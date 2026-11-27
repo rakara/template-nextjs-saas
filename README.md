@@ -4,20 +4,12 @@ Production-oriented starter for full-stack SaaS and business applications.
 
 ## Stack
 
-- Next.js App Router, React, TypeScript (strict)
-- Tailwind CSS utilities + CSS Modules for complex component styles
-- Supabase Auth, PostgreSQL and `@supabase/ssr`
-- Zod, Vitest and Playwright
-- npm, GitHub Actions and Vercel
+Next.js App Router, React, strict TypeScript, Tailwind CSS, Supabase Auth/PostgreSQL, Zod, Vitest, Playwright, npm and Vercel.
 
-## Status
+## Setup
 
-Initial repository bootstrap. See `TASKS.md` for implementation status and `docs/` for architecture, development, deployment, environment and security guidance.
+1. Copy `.env.example` to `.env.local` and configure a Supabase project.
+2. Run `npm install`.
+3. Run `npm run dev`.
 
-## Quick start
-
-The complete setup instructions will be maintained here as implementation lands. Copy `.env.example` to `.env.local`, configure a Supabase project, then install dependencies with `npm ci`.
-
-## Scope
-
-Includes real authentication/session handling, server-side authorization patterns, database migrations and RLS examples. Does not include fake users, mocked authentication, or hard-coded credentials.
+See `docs/` and `TASKS.md` for implementation notes. No fake users, mocked authentication or hard-coded credentials are shipped.

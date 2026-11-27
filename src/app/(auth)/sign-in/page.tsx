@@ -1,0 +1,3 @@
+import { signIn } from "@/app/actions/auth";
+import Link from "next/link";
+export default function SignInPage() { return <main className="mx-auto flex min-h-screen max-w-md flex-col justify-center px-6"><h1 className="text-3xl font-bold">Sign in</h1><form action={signIn} className="mt-8 grid gap-4"><label>Email<input name="email" type="email" autoComplete="email" required className="rounded-lg border p-3" /></label><label>Password<input name="password" type="password" autoComplete="current-password" required className="rounded-lg border p-3" /></label><button className="rounded-lg bg-blue-700 p-3 text-white">Sign in</button></form><p className="mt-6 text-sm">No account? <Link className="text-blue-700 underline" href="/sign-up">Create one</Link></p></main>; }
