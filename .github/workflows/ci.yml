@@ -17,6 +17,7 @@ jobs:
       - run: npm run lint
       - run: npm run typecheck
       - run: npm test
+      - run: npm audit --audit-level=high
       - name: Report dependency audit summary
         run: |
           npm audit --json > audit.json || true
