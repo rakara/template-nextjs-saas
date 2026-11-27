@@ -20,5 +20,5 @@
 
 ## Validation
 - GitHub Actions has passed the application lint, typecheck, unit-test, dependency-audit and production-build job on the current starter implementation.
-- The Supabase database CI job is being validated separately.
+- GitHub Actions has also passed the local Supabase migration reset and database lint job.
 - Authentication requires the adopter's own Supabase URL, publishable key and Auth redirect configuration.
