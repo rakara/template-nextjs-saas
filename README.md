@@ -9,7 +9,7 @@ Next.js App Router, React, strict TypeScript, Tailwind CSS, Supabase Auth/Postgr
 ## Setup
 
 1. Copy `.env.example` to `.env.local` and configure a Supabase project.
-2. Run `npm install`.
+2. Run `npm ci`.
 3. Run `npm run dev`.
 
 See `docs/` and `TASKS.md` for implementation notes. Run `npx supabase start` and `npx supabase db reset` to start the local database and apply migrations. No fake users, mocked authentication or hard-coded credentials are shipped.
