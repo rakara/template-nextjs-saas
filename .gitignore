@@ -1,0 +1,12 @@
+node_modules
+.next
+out
+coverage
+.env*
+!.env.example
+.vercel
+*.tsbuildinfo
+
+audit.json
+
+next-env.d.ts

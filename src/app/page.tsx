@@ -1,0 +1,37 @@
+import Link from "next/link";
+import { createClient } from "@/lib/supabase/server";
+export default async function HomePage() {
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  return (
+    <main className="mx-auto flex min-h-screen max-w-5xl flex-col justify-center px-6 py-20">
+      <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-blue-700">
+        Application starter
+      </p>
+      <h1 className="max-w-3xl text-4xl font-bold tracking-tight sm:text-6xl">
+        Build your next product on a sound foundation.
+      </h1>
+      <p className="mt-6 max-w-2xl text-lg text-slate-600">
+        Next.js App Router, TypeScript and Supabase authentication.
+      </p>
+      <div className="mt-8 flex gap-3">
+        {user ? (
+          <Link className="rounded-lg bg-blue-700 px-5 py-3 text-white" href="/dashboard">
+            Dashboard
+          </Link>
+        ) : (
+          <>
+            <Link className="rounded-lg bg-blue-700 px-5 py-3 text-white" href="/sign-in">
+              Sign in
+            </Link>
+            <Link className="rounded-lg border px-5 py-3" href="/sign-up">
+              Create account
+            </Link>
+          </>
+        )}
+      </div>
+    </main>
+  );
+}

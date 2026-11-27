@@ -1,0 +1,47 @@
+name: CI
+on:
+  pull_request:
+  push:
+    branches: [main]
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+permissions:
+  contents: read
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          package-manager-cache: true
+      - run: npm ci
+      - run: npm run format:check
+      - run: npm run lint
+      - run: npm run typecheck
+      - run: npm test
+      - run: npm audit --audit-level=high
+      - name: Report dependency audit summary
+        run: |
+          npm audit --json > audit.json || true
+          node -e 'const audit=require("./audit.json"); console.log(JSON.stringify(audit.metadata?.vulnerabilities ?? {}, null, 2)); for (const [name, item] of Object.entries(audit.vulnerabilities ?? {})) console.log(`${name}: ${item.severity}; fix=${JSON.stringify(item.fixAvailable)}`)'
+      - run: npm run build
+
+
+  database:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v5
+      - uses: supabase/setup-cli@v1
+        with:
+          version: latest
+      - run: supabase start -x studio,imgproxy,edge-runtime,logflare,vector
+      - run: supabase db reset
+      - run: supabase db lint --local
+      - run: supabase stop --no-backup
